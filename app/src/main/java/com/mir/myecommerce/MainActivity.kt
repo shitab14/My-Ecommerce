@@ -1,5 +1,7 @@
 package com.mir.myecommerce
 
+import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +44,18 @@ class MainActivity : AppCompatActivity() {
         })
         binding.clSplashContent.startAnimation(fadeAnimation)
 
+        if(NetworkUtil.isNetworkAvailable()) {
+            @SuppressLint("SetTextI18n")
+            binding.tvInternet.text = "Connection Has"
+            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+        } else {
+            @SuppressLint("SetTextI18n")
+            binding.tvInternet.text = "Connection NOT Has"
+            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+        }
     }
+
+
 
 
 }
