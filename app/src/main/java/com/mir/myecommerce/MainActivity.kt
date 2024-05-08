@@ -1,7 +1,6 @@
 package com.mir.myecommerce
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,11 +20,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.iBtnLanguageSwitch.setOnClickListener {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show()
-        }
+        setupInitialization()
+        setupClickListeners()
 
-        fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in_out)
+        setupAndStartSplashAnimation()
+
+        if(NetworkUtil.isNetworkAvailable()) {
+            @SuppressLint("SetTextI18n")
+            binding.tvInternet.text = "Connection Has"
+            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+        } else {
+            @SuppressLint("SetTextI18n")
+            binding.tvInternet.text = "Connection NOT Has"
+            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+        }
+    }
+
+    private fun setupAndStartSplashAnimation() {
         fadeAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
                 // on Animation Start
@@ -43,19 +54,18 @@ class MainActivity : AppCompatActivity() {
 
         })
         binding.clSplashContent.startAnimation(fadeAnimation)
+    }
 
-        if(NetworkUtil.isNetworkAvailable()) {
-            @SuppressLint("SetTextI18n")
-            binding.tvInternet.text = "Connection Has"
-            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
-        } else {
-            @SuppressLint("SetTextI18n")
-            binding.tvInternet.text = "Connection NOT Has"
-            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
-        }
+    private fun setupInitialization() {
+        fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in_out)
     }
 
 
+    private fun setupClickListeners() {
+        binding.iBtnLanguageSwitch.setOnClickListener {
+            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show()
+        }
+    }
 
 
 }
