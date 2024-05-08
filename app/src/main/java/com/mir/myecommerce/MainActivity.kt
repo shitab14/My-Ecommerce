@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.mir.myecommerce.base.BaseActivity
 import com.mir.myecommerce.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+//    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
 
     private lateinit var fadeAnimation: Animation

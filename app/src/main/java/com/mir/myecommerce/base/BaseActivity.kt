@@ -3,12 +3,16 @@ package com.mir.myecommerce.base
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
+import kotlin.properties.Delegates
 
 /**
 Created by Shitab Mir on 8/5/24.
 shitabmir@gmail.com
  **/
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<DataBinding: ViewDataBinding> : AppCompatActivity() {
+
+ var binding: DataBinding by Delegates.notNull()
 
  private val baseActivityTag: String = "BaseActivity:"
  override fun onCreate(savedInstanceState: Bundle?) {
