@@ -8,31 +8,44 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
 
     private lateinit var fadeAnimation: Animation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         setupInitialization()
         setupClickListeners()
-
+        setupLiveDataObservers()
         setupAndStartSplashAnimation()
 
-        if(NetworkUtil.isNetworkAvailable()) {
-            @SuppressLint("SetTextI18n")
-            binding.tvInternet.text = "Connection Has"
-            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
-        } else {
-            @SuppressLint("SetTextI18n")
-            binding.tvInternet.text = "Connection NOT Has"
-            binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkInternetConnection()
+    }
+
+    private fun setupLiveDataObservers() {
+        viewModel.internetConnected.observe(this) { connected ->
+            if(connected) {
+                @SuppressLint("SetTextI18n")
+                binding.tvInternet.text = "Connection Has"
+                binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+            } else {
+                @SuppressLint("SetTextI18n")
+                binding.tvInternet.text = "Connection NOT Has"
+                binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+            }
         }
     }
 
