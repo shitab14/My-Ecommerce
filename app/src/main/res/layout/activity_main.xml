@@ -34,6 +34,17 @@
                 app:srcCompat="@android:drawable/ic_menu_rotate"
                 tools:ignore="ContentDescription" />
 
+            <ImageButton
+                android:id="@+id/iBtnFetchLocation"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iBtnLanguageSwitch"
+                app:srcCompat="@android:drawable/ic_menu_rotate"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/tvInternet"
                 android:layout_width="wrap_content"
@@ -43,6 +54,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText"
                 tools:text="Internet" />
+
+            <TextView
+                android:id="@+id/tvLocationCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvInternet"
+                tools:ignore="HardcodedText"
+                tools:text="Coordinates" />
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
