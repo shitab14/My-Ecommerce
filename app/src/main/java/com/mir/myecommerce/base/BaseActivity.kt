@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
 /**

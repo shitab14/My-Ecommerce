@@ -8,6 +8,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'org.jetbrains.kotlin.plugin.serialization'
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -81,8 +82,10 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
 
     // dagger hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
+//    implementation "com.google.dagger:hilt-android:2.38.1"
+//    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
 
     // sdp dp

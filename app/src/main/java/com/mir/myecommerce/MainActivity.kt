@@ -21,13 +21,14 @@ import com.google.android.gms.location.LocationServices
 import com.mir.myecommerce.base.BaseActivity
 import com.mir.myecommerce.common.LocationUtil
 import com.mir.myecommerce.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.compass.CompassOverlay
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 //    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
@@ -110,6 +111,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 binding.tvInternet.text = "Connection NOT Has"
                 binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
             }
+        }
+        viewModel.message.observe(this) { msg ->
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         }
     }
 
