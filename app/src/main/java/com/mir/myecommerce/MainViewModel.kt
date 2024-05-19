@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.domain.AppUseCase
 import com.mir.myecommerce.network.State
+import com.mir.testermodule.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class MainViewModel  @Inject constructor(private val appUseCase: AppUseCase) : V
         _internetConnected.value = NetworkUtil.isNetworkAvailable()
     }
 
+    fun getCurrentTimeInMillis(): Long {
+        return DateUtil.getCurrentTimeInMillis()
+    }
 
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
