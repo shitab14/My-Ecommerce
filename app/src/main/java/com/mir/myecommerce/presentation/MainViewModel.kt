@@ -1,4 +1,4 @@
-package com.mir.myecommerce
+package com.mir.myecommerce.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

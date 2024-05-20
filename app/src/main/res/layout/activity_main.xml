@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".presentation.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clMainContent"
@@ -71,7 +71,9 @@
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
-                app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"/>
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

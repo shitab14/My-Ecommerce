@@ -6,12 +6,18 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.view.View
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.views.CustomZoomButtonsController
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.compass.CompassOverlay
 
 /**
 Created by Shitab Mir on 12/5/24.
@@ -19,11 +25,11 @@ shitabmir@gmail.com
  **/
 class LocationUtil(
  private val context: Context,
- private val fusedLocationProviderClient: FusedLocationProviderClient
 ) {
 
  private var locationRequest: LocationRequest? = null
  private var locationCallback: LocationCallback? = null
+ private var locationProviderClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
  // Permission check and request (replace with your permission handling logic)
  fun hasLocationPermission(): Boolean {
@@ -72,7 +78,7 @@ class LocationUtil(
    requestLocationPermission()
    return
   }
-  fusedLocationProviderClient.requestLocationUpdates(
+  locationProviderClient.requestLocationUpdates(
    locationRequest!!,
    locationCallback!!,
    null  // You can set a Looper for the callback if needed
@@ -81,7 +87,7 @@ class LocationUtil(
 
  fun stopLocationUpdates() {
   locationCallback?.let {
-   fusedLocationProviderClient.removeLocationUpdates(it)//removeUpdates(it)
+   locationProviderClient.removeLocationUpdates(it)//removeUpdates(it)
    locationCallback = null
   }
  }
@@ -93,6 +99,20 @@ class LocationUtil(
  ) {
 
  }
+
+ fun setupMapView(mapView: MapView) {
+  mapView.visibility = View.VISIBLE
+  mapView.setTileSource(TileSourceFactory.MAPNIK)
+  mapView.controller.setZoom(18.0)
+  mapView.zoomController.setVisibility(CustomZoomButtonsController.Visibility.ALWAYS)
+  mapView.setMultiTouchControls(true)
+
+  val compassOverlay = CompassOverlay(context, mapView)
+  compassOverlay.enableCompass()
+  mapView.overlays.add(compassOverlay)
+
+ }
+
 
  companion object {
   private const val LOCATION_PERMISSION_REQUEST_CODE = 100

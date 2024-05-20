@@ -1,41 +1,39 @@
-package com.mir.myecommerce
+package com.mir.myecommerce.presentation
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.Manifest.permission.ACCESS_NETWORK_STATE
-import android.Manifest.permission.ACCESS_WIFI_STATE
-import android.Manifest.permission.INTERNET
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.Manifest
 import android.annotation.SuppressLint
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.location.LocationServices
+import com.mir.myecommerce.R
 import com.mir.myecommerce.base.BaseActivity
 import com.mir.myecommerce.common.LocationUtil
+import com.mir.myecommerce.common.PermissionManager
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
-import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.compass.CompassOverlay
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-//    private lateinit var binding: ActivityMainBinding
+
     private lateinit var viewModel: MainViewModel
 
     private lateinit var fadeAnimation: Animation
 
     private lateinit var locationTracker: LocationUtil
+
+    private lateinit var permissionManager: PermissionManager
+    private val permissions = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    )
 
     companion object {
         private const val TAG = "MainActivity:"
@@ -51,20 +49,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupLiveDataObservers()
         setupAndStartSplashAnimation()
 
-        val locationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        locationTracker = LocationUtil(this, locationProviderClient)
-        setupMapView()
+        locationTracker = LocationUtil(this)
+        setupPermissionManager()
+        requestMyPermissions()
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        /*// Auto fetch location
-        locationTracker.startLocationUpdates { location ->
-            // Update UI or perform actions based on the new location
-            Log.d("LocationTracker", "Location update: ${location.latitude}, ${location.longitude}")
-        }*/
+    private fun requestMyPermissions() {
+        permissionManager.requestPermissions(permissions)  { allPermissionsGranted ->
+            if (allPermissionsGranted) {
+                Toast.makeText(this, "All permissions granted", Toast.LENGTH_SHORT).show()
+                // Proceed with the app functionality that requires the permissions
+            } else {
+                Toast.makeText(this, "Some permissions are denied", Toast.LENGTH_SHORT).show()
+                // Handle the case where permissions are denied
+            }
+        }
     }
+
+    private fun setupPermissionManager() {
+        permissionManager = PermissionManager(this)
+
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -86,18 +92,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         locationTracker.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
+        permissionManager.handlePermissionsResult(requestCode, permissions, grantResults)
 
-        val permissionsToRequest = ArrayList<String>()
-        for (i in grantResults.indices) {
-            permissionsToRequest.add(permissions[i])
-        }
-        if (permissionsToRequest.size > 0) {
-            ActivityCompat.requestPermissions(
-                this,
-                permissionsToRequest.toTypedArray<String>(),
-                REQUEST_PERMISSIONS_REQUEST_CODE
-            )
-        }
     }
 
     private fun setupLiveDataObservers() {
@@ -166,57 +162,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    private fun setupMapView() {
-        binding.mapView.setTileSource(TileSourceFactory.MAPNIK)
-        binding.mapView.controller.setZoom(18.0)
-        requestPermissionsIfNecessary(
-            arrayOf<String>(
-//                WRITE_EXTERNAL_STORAGE,
-                ACCESS_COARSE_LOCATION,
-                ACCESS_NETWORK_STATE,
-                ACCESS_WIFI_STATE,
-                INTERNET
-            )
-        )
-        binding.mapView.zoomController.setVisibility(CustomZoomButtonsController.Visibility.ALWAYS)
-        binding.mapView.setMultiTouchControls(true)
-
-
-        val compassOverlay = CompassOverlay(this, binding.mapView)
-        compassOverlay.enableCompass()
-        binding.mapView.overlays.add(compassOverlay)
-
-    }
-
     private fun setupLocationMarkerOnMap(latitude: Double, longitude: Double) {
-        val point = GeoPoint(latitude, longitude)
+        if (binding.mapView.isVisible) {
+            val point = GeoPoint(latitude, longitude)
 
-        val startMarker = Marker(binding.mapView)
-        startMarker.position = point
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
-        binding.mapView.overlays.add(startMarker)
-        binding.mapView.controller.setCenter(point)
-    }
-
-    private fun requestPermissionsIfNecessary(permissions: Array<String>) {
-        val permissionsToRequest = ArrayList<String>()
-        for (permission in permissions) {
-            if (ContextCompat.checkSelfPermission(this, permission)
-                != PackageManager.PERMISSION_GRANTED
-            ) {
-                permissionsToRequest.add(permission)
-            }
-        }
-        if (permissionsToRequest.size > 0) {
-            ActivityCompat.requestPermissions(
-                this,
-                permissionsToRequest.toTypedArray<String>(),
-                REQUEST_PERMISSIONS_REQUEST_CODE
-            )
+            val startMarker = Marker(binding.mapView)
+            startMarker.position = point
+            startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
+            binding.mapView.overlays.add(startMarker)
+            binding.mapView.controller.setCenter(point)
         }
     }
 
-    private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
+
 
 
 }
