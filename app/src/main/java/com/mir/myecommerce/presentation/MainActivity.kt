@@ -160,6 +160,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 locationTracker.requestLocationPermission()
             }
         }
+
+        binding.btnSetToPref.setOnClickListener {
+            if (binding.etSetNameToPref.text.isNotBlank()) {
+                viewModel.setNameToSharedPreference(binding.etSetNameToPref.text.toString())
+            }
+        }
+
+        binding.btnGetFromPref.setOnClickListener {
+            if (viewModel.getNameFromSharedPreference().isNotBlank()) {
+                binding.tvGetNameFromPref.text = viewModel.getNameFromSharedPreference()
+            }
+        }
     }
 
     private fun setupLocationMarkerOnMap(latitude: Double, longitude: Double) {

@@ -1,6 +1,6 @@
 package com.mir.myecommerce.network
 
-import com.mir.myecommerce.domain.ResponseData
+import com.mir.myecommerce.data.datamodel.ResponseData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

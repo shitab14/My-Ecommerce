@@ -1,5 +1,6 @@
-package com.mir.myecommerce.domain
+package com.mir.myecommerce.data.repository
 
+import com.mir.myecommerce.data.datamodel.ResponseData
 import com.mir.myecommerce.network.ApiService
 import retrofit2.Response
 import javax.inject.Inject

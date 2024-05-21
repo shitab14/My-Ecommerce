@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mir.myecommerce.common.NetworkUtil
-import com.mir.myecommerce.domain.AppUseCase
+import com.mir.myecommerce.domain.appusecases.AppUseCase
+import com.mir.myecommerce.domain.userusecases.GetNameUseCase
+import com.mir.myecommerce.domain.userusecases.SetNameUseCase
 import com.mir.myecommerce.network.State
 import com.mir.testermodule.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,11 @@ Created by Shitab Mir on 8/5/24.
 shitabmir@gmail.com
  **/
 @HiltViewModel
-class MainViewModel  @Inject constructor(private val appUseCase: AppUseCase) : ViewModel() {
+class MainViewModel  @Inject constructor(
+    private val appUseCase: AppUseCase,
+    private val setNameUseCase: SetNameUseCase,
+    private val getNameUseCase: GetNameUseCase,
+) : ViewModel() {
     private val _internetConnected : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val internetConnected: LiveData<Boolean> get() = _internetConnected
 
@@ -27,6 +33,13 @@ class MainViewModel  @Inject constructor(private val appUseCase: AppUseCase) : V
 
     fun getCurrentTimeInMillis(): Long {
         return DateUtil.getCurrentTimeInMillis()
+    }
+
+    fun setNameToSharedPreference(name: String) {
+        setNameUseCase.invoke(name = name)
+    }
+    fun getNameFromSharedPreference(): String {
+        return getNameUseCase.invoke()
     }
 
     private val _message = MutableLiveData<String>()

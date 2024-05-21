@@ -1,4 +1,4 @@
-package com.mir.myecommerce.domain
+package com.mir.myecommerce.data.datamodel
 
 import com.google.gson.annotations.SerializedName
 

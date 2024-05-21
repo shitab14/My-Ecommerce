@@ -75,6 +75,52 @@
                 app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"
                 tools:visibility="visible" />
 
+
+            <LinearLayout
+                android:id="@+id/llSetNameToPref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/mapView">
+
+                <EditText
+                    android:id="@+id/etSetNameToPref"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Set Name in SharedPref"
+                    android:layout_weight="5"/>
+
+                <Button
+                    android:id="@+id/btnSetToPref"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Set"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llSGetNameFromPref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/llSetNameToPref">
+
+                <TextView
+                    android:id="@+id/tvGetNameFromPref"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="..."
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_16sdp" />
+
+                <Button
+                    android:id="@+id/btnGetFromPref"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Get"/>
+
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

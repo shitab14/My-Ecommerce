@@ -1,5 +1,6 @@
-package com.mir.myecommerce.domain
+package com.mir.myecommerce.data.repository
 
+import com.mir.myecommerce.data.datamodel.ResponseData
 import retrofit2.Response
 
 /**
