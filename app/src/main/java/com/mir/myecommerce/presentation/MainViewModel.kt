@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mir.cachemodule.database.UserTable
+import com.mir.myecommerce.base.BaseViewModel
 import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.domain.appusecases.AppUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.DeleteUserTableUseCase
@@ -30,13 +31,7 @@ class MainViewModel  @Inject constructor(
     private val insertUserUseCase: InsertUserUseCase,
     private val fetchUserUseCase: FetchUsersUseCase,
     private val deleteUserTableUseCase: DeleteUserTableUseCase,
-) : ViewModel() {
-    private val _internetConnected : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    val internetConnected: LiveData<Boolean> get() = _internetConnected
-
-    fun checkInternetConnection() {
-        _internetConnected.value = NetworkUtil.isNetworkAvailable()
-    }
+) : BaseViewModel() {
 
     fun getCurrentTimeInMillis(): Long {
         return DateUtil.getCurrentTimeInMillis()

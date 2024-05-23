@@ -15,7 +15,7 @@ abstract class BaseActivity<DataBinding: ViewDataBinding> : AppCompatActivity() 
 
  var binding: DataBinding by Delegates.notNull()
 
- private val baseActivityTag: String = "BaseActivity:"
+ private val baseActivityTag: String = "Tag:BaseActivity:"
  override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
 
