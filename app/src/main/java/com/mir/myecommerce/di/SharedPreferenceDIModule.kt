@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.mir.cachemodule.sharedpreference.SharedPreferenceConstants
 import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
-import com.mir.myecommerce.common.ApplicationContextProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

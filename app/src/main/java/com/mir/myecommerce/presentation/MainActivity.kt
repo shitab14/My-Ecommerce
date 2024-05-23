@@ -18,7 +18,6 @@ import com.mir.myecommerce.common.LocationUtil
 import com.mir.myecommerce.common.PermissionManager
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
@@ -42,6 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         private const val TAG = "MainActivity:"
     }
 
+    // Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -57,6 +57,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         requestMyPermissions()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkInternetConnection()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        locationTracker.stopLocationUpdates()
+    }
+
+    // Permission
+    private fun setupPermissionManager() {
+        permissionManager = PermissionManager(this)
+    }
     private fun requestMyPermissions() {
         permissionManager.requestPermissions(permissions)  { allPermissionsGranted ->
             if (allPermissionsGranted) {
@@ -67,22 +81,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 // Handle the case where permissions are denied
             }
         }
-    }
-
-    private fun setupPermissionManager() {
-        permissionManager = PermissionManager(this)
-
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.checkInternetConnection()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        locationTracker.stopLocationUpdates()
     }
 
     override fun onRequestPermissionsResult(
@@ -99,6 +97,44 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
+    private fun setupAndStartSplashAnimation() {
+        fadeAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(p0: Animation?) {
+                // on Animation Start
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+                // on Animation End
+                binding.clMainContent.visibility = View.VISIBLE
+                binding.clSplashContent.visibility = View.GONE
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+                // on Animation Repeat
+            }
+
+        })
+        binding.clSplashContent.startAnimation(fadeAnimation)
+    }
+
+    private fun setupInitialization() {
+        fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in_out)
+    }
+
+    private fun setupLocationMarkerOnMap(latitude: Double, longitude: Double) {
+        if (binding.mapView.isVisible) {
+            val point = GeoPoint(latitude, longitude)
+
+            val startMarker = Marker(binding.mapView)
+            startMarker.position = point
+            startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
+            binding.mapView.overlays.add(startMarker)
+            binding.mapView.controller.setCenter(point)
+        }
+    }
+
+
+    // Observers & Listeners
     private fun setupLiveDataObservers() {
         viewModel.internetConnected.observe(this) { connected ->
             if(connected) {
@@ -127,31 +163,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
     }
-
-    private fun setupAndStartSplashAnimation() {
-        fadeAnimation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
-                // on Animation Start
-            }
-
-            override fun onAnimationEnd(p0: Animation?) {
-                // on Animation End
-                binding.clMainContent.visibility = View.VISIBLE
-                binding.clSplashContent.visibility = View.GONE
-            }
-
-            override fun onAnimationRepeat(p0: Animation?) {
-                // on Animation Repeat
-            }
-
-        })
-        binding.clSplashContent.startAnimation(fadeAnimation)
-    }
-
-    private fun setupInitialization() {
-        fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in_out)
-    }
-
 
     @SuppressLint("SetTextI18n")
     private fun setupClickListeners() {
@@ -219,20 +230,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
     }
-
-    private fun setupLocationMarkerOnMap(latitude: Double, longitude: Double) {
-        if (binding.mapView.isVisible) {
-            val point = GeoPoint(latitude, longitude)
-
-            val startMarker = Marker(binding.mapView)
-            startMarker.position = point
-            startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
-            binding.mapView.overlays.add(startMarker)
-            binding.mapView.controller.setCenter(point)
-        }
-    }
-
-
-
 
 }

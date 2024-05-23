@@ -17,6 +17,7 @@ class SharedPreferenceManager(val sharedPreferences: SharedPreferences?) {
     when (T::class.java) {
      String::class.java -> return getString(key, defaultValue as String) ?: ""
      Int::class.java -> return getInt(key, defaultValue as Int)
+     Long::class.java -> return getLong(key, defaultValue as Long)
      Boolean::class.java -> return getBoolean(key, defaultValue as Boolean)
      Float::class.java -> return getFloat(key, defaultValue as Float)
      else -> throw IllegalArgumentException("Unsupported data type")
