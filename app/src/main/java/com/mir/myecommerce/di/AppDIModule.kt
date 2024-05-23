@@ -1,8 +1,8 @@
 package com.mir.myecommerce.di
 
 import android.content.Context
-import com.mir.myecommerce.data.repository.AppDataRepository
-import com.mir.myecommerce.data.repository.AppDataRepositoryImp
+import com.mir.myecommerce.data.repository.apprepository.AppDataRepository
+import com.mir.myecommerce.data.repository.apprepository.AppDataRepositoryImp
 import com.mir.myecommerce.network.ApiService
 import dagger.Module
 import dagger.Provides

@@ -24,102 +24,168 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible">
 
-            <ImageButton
-                android:id="@+id/iBtnLanguageSwitch"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_menu_rotate"
-                tools:ignore="ContentDescription" />
-
-            <ImageButton
-                android:id="@+id/iBtnFetchLocation"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iBtnLanguageSwitch"
-                app:srcCompat="@android:drawable/ic_menu_rotate"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/tvInternet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_24sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
-                tools:text="Internet" />
-
-            <TextView
-                android:id="@+id/tvLocationCoordinates"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_24sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvInternet"
-                tools:ignore="HardcodedText"
-                tools:text="Coordinates" />
-
-            <org.osmdroid.views.MapView
-                android:id="@+id/mapView"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"
-                tools:visibility="visible" />
+                android:layout_height="match_parent">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/llSetNameToPref"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/mapView">
+                    <ImageButton
+                        android:id="@+id/iBtnLanguageSwitch"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@android:drawable/ic_menu_rotate"
+                        tools:ignore="ContentDescription" />
 
-                <EditText
-                    android:id="@+id/etSetNameToPref"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Set Name in SharedPref"
-                    android:layout_weight="5"/>
+                    <ImageButton
+                        android:id="@+id/iBtnFetchLocation"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iBtnLanguageSwitch"
+                        app:srcCompat="@android:drawable/ic_menu_rotate"
+                        tools:ignore="ContentDescription" />
 
-                <Button
-                    android:id="@+id/btnSetToPref"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="Set"/>
+                    <TextView
+                        android:id="@+id/tvInternet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_24sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="HardcodedText"
+                        tools:text="Internet" />
 
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/llSGetNameFromPref"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/llSetNameToPref">
+                    <TextView
+                        android:id="@+id/tvLocationCoordinates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_24sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvInternet"
+                        tools:ignore="HardcodedText"
+                        tools:text="Coordinates" />
 
-                <TextView
-                    android:id="@+id/tvGetNameFromPref"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:text="..."
-                    android:textAlignment="center"
-                    android:textSize="@dimen/_16sdp" />
+                    <org.osmdroid.views.MapView
+                        android:id="@+id/mapView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"
+                        tools:visibility="visible" />
 
-                <Button
-                    android:id="@+id/btnGetFromPref"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="Get"/>
+                    <LinearLayout
+                        android:id="@+id/llSetNameToPref"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/mapView">
 
-            </LinearLayout>
+                        <EditText
+                            android:id="@+id/etSetNameToPref"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Set Name in SharedPref"
+                            android:layout_weight="5"/>
+
+                        <Button
+                            android:id="@+id/btnSetToPref"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Set"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llGetNameFromPref"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/llSetNameToPref">
+
+                        <TextView
+                            android:id="@+id/tvGetNameFromPref"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="..."
+                            android:textAlignment="center"
+                            android:textSize="@dimen/_16sdp" />
+
+                        <Button
+                            android:id="@+id/btnGetFromPref"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Get"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llUserDatabase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@id/llGetNameFromPref">
+
+                        <EditText
+                            android:id="@+id/etSetUserFirstNameDatabase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Set First Name in Database"
+                            />
+                        <EditText
+                            android:id="@+id/etSetUserLastNameDatabase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Set Last Name in Database"
+                            />
+                        <EditText
+                            android:id="@+id/etSetUserAgeDatabase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Set Age in Database"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            />
+
+                        <Button
+                            android:id="@+id/btnInsertUserToDB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set To DB"/>
+
+                        <TextView
+                            android:id="@+id/tvUsersDataFromDB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_18sdp"
+                            android:text="From DB"/>
+
+                        <Button
+                            android:id="@+id/btnFetchUsersFromDB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fetch from To DB"/>
+
+                        <Button
+                            android:id="@+id/btnClearDB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clear User DB"/>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

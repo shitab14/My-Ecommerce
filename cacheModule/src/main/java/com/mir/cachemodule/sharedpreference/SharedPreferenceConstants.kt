@@ -1,4 +1,4 @@
-package com.mir.cachemodule
+package com.mir.cachemodule.sharedpreference
 
 /**
 Created by Shitab Mir on 21/5/24.

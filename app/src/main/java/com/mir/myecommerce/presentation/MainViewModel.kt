@@ -4,8 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mir.cachemodule.database.UserTable
 import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.domain.appusecases.AppUseCase
+import com.mir.myecommerce.domain.databaseuserusecase.DeleteUserTableUseCase
+import com.mir.myecommerce.domain.databaseuserusecase.FetchUsersUseCase
+import com.mir.myecommerce.domain.databaseuserusecase.InsertUserUseCase
 import com.mir.myecommerce.domain.userusecases.GetNameUseCase
 import com.mir.myecommerce.domain.userusecases.SetNameUseCase
 import com.mir.myecommerce.network.State
@@ -23,6 +27,9 @@ class MainViewModel  @Inject constructor(
     private val appUseCase: AppUseCase,
     private val setNameUseCase: SetNameUseCase,
     private val getNameUseCase: GetNameUseCase,
+    private val insertUserUseCase: InsertUserUseCase,
+    private val fetchUserUseCase: FetchUsersUseCase,
+    private val deleteUserTableUseCase: DeleteUserTableUseCase,
 ) : ViewModel() {
     private val _internetConnected : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val internetConnected: LiveData<Boolean> get() = _internetConnected
@@ -40,6 +47,34 @@ class MainViewModel  @Inject constructor(
     }
     fun getNameFromSharedPreference(): String {
         return getNameUseCase.invoke()
+    }
+
+    private val _userListFromDB : MutableLiveData<List<UserTable>> = MutableLiveData<List<UserTable>>()
+    val userListFromDB: LiveData<List<UserTable>> get() = _userListFromDB
+    suspend fun fetchUsersFromDatabase() {
+        viewModelScope.launch {
+            _userListFromDB.value = fetchUserUseCase.invoke()
+//        return fetchUserUseCase.invoke()
+        }
+    }
+    fun insertUserToDatabase(fName: String, lName: String, age: Int?) {
+        val user = UserTable(
+            id = 0,
+            firstName = fName,
+            lastName = lName,
+            age = age ?: 0,
+        )
+        viewModelScope.launch {
+            insertUserUseCase.invoke(
+                user = user
+            )
+        }
+    }
+
+    fun clearUserDatabase() {
+        viewModelScope.launch {
+            deleteUserTableUseCase.invoke()
+        }
     }
 
     private val _message = MutableLiveData<String>()

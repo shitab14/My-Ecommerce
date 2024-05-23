@@ -1,4 +1,4 @@
-package com.mir.cachemodule
+package com.mir.cachemodule.sharedpreference
 
 import android.content.SharedPreferences
 

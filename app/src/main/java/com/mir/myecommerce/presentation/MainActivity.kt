@@ -11,12 +11,15 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.mir.myecommerce.R
 import com.mir.myecommerce.base.BaseActivity
 import com.mir.myecommerce.common.LocationUtil
 import com.mir.myecommerce.common.PermissionManager
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
 
@@ -111,6 +114,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.message.observe(this) { msg ->
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         }
+
+        viewModel.userListFromDB.observe(this) { userList ->
+            var allUsersData = ""
+            if (!(userList.isNullOrEmpty())) {
+                userList.forEach { user ->
+                    allUsersData += "Age: ${user.age} Name: ${user.lastName}, ${user.firstName}\n"
+                }
+                binding.tvUsersDataFromDB.text = allUsersData
+            } else {
+                binding.tvUsersDataFromDB.text = "No Data"
+            }
+        }
     }
 
     private fun setupAndStartSplashAnimation() {
@@ -172,6 +187,37 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 binding.tvGetNameFromPref.text = viewModel.getNameFromSharedPreference()
             }
         }
+
+        binding.btnInsertUserToDB.setOnClickListener {
+            var age: Int? = null
+            if (!binding.etSetUserAgeDatabase.text.isNullOrBlank()) {
+                age = try {
+                    binding.etSetUserAgeDatabase.text.toString().toInt()
+                } catch (e: Exception) {
+                    null
+                }
+            }
+            viewModel.insertUserToDatabase(
+                fName = (binding.etSetUserFirstNameDatabase.text ?: "").toString(),
+                lName = (binding.etSetUserLastNameDatabase.text ?: "").toString(),
+                age =  age
+            )
+            Toast.makeText(this, "Set to DB", Toast.LENGTH_LONG).show()
+            binding.etSetUserFirstNameDatabase.text.clear()
+            binding.etSetUserLastNameDatabase.text.clear()
+            binding.etSetUserAgeDatabase.text.clear()
+        }
+
+        binding.btnFetchUsersFromDB.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.fetchUsersFromDatabase()
+            }
+        }
+
+        binding.btnClearDB.setOnClickListener {
+            viewModel.clearUserDatabase()
+        }
+
     }
 
     private fun setupLocationMarkerOnMap(latitude: Double, longitude: Double) {

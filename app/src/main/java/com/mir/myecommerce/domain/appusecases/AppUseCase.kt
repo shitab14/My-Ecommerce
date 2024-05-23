@@ -2,7 +2,7 @@ package com.mir.myecommerce.domain.appusecases
 
 import android.util.Log
 import com.google.gson.Gson
-import com.mir.myecommerce.data.repository.AppDataRepository
+import com.mir.myecommerce.data.repository.apprepository.AppDataRepository
 import com.mir.myecommerce.data.datamodel.ResponseData
 import com.mir.myecommerce.network.ErrorMessage
 import com.mir.myecommerce.network.State

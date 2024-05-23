@@ -1,7 +1,7 @@
 package com.mir.myecommerce.domain.userusecases
 
-import com.mir.cachemodule.SharedPreferenceConstants
-import com.mir.cachemodule.SharedPreferenceManager
+import com.mir.cachemodule.sharedpreference.SharedPreferenceConstants
+import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
 import javax.inject.Inject
 
 /**

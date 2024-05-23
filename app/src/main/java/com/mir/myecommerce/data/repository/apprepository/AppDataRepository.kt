@@ -1,4 +1,4 @@
-package com.mir.myecommerce.data.repository
+package com.mir.myecommerce.data.repository.apprepository
 
 import com.mir.myecommerce.data.datamodel.ResponseData
 import retrofit2.Response

@@ -2,14 +2,14 @@ package com.mir.myecommerce.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.mir.cachemodule.SharedPreferenceConstants
-import com.mir.cachemodule.SharedPreferenceManager
+import com.mir.cachemodule.sharedpreference.SharedPreferenceConstants
+import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
 import com.mir.myecommerce.common.ApplicationContextProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
@@ -22,9 +22,10 @@ class SharedPreferenceDIModule {
 
  @Provides
  @Singleton
- fun provideSharedPreferences(): SharedPreferences? {
-  return ApplicationContextProvider.getContext()
-   ?.getSharedPreferences(SharedPreferenceConstants.SHARED_PREF_KEY, Context.MODE_PRIVATE)
+ fun provideSharedPreferences(
+  @ApplicationContext context: Context,
+  ): SharedPreferences? {
+  return context.getSharedPreferences(SharedPreferenceConstants.SHARED_PREF_KEY, Context.MODE_PRIVATE)
  }
 
  @Provides
