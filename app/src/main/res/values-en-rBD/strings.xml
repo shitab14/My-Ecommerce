@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">My Ecommerce</string>
-    <string name="internet_connection_exists">Connection Exists</string>
-    <string name="internet_connection_missing">Connection Missing</string>
-    <string name="text_no_data">No Data</string>
+    <string name="internet_connection_exists">Connection Exists (BD)</string>
+    <string name="internet_connection_missing">Connection Missing (BD)</string>
+    <string name="text_no_data">No Data (BD)</string>
     <string name="fetch_from_db">Fetch from DB</string>
     <string name="clear_user_db">Clear User DB</string>
     <string name="set_to_db">Set To DB</string>

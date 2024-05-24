@@ -74,10 +74,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun requestMyPermissions() {
         permissionManager.requestPermissions(permissions)  { allPermissionsGranted ->
             if (allPermissionsGranted) {
-                Toast.makeText(this, "All permissions granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.text_all_permissions_granted), Toast.LENGTH_SHORT).show()
                 // Proceed with the app functionality that requires the permissions
             } else {
-                Toast.makeText(this, "Some permissions are denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.text_some_permissions_are_denied), Toast.LENGTH_SHORT).show()
                 // Handle the case where permissions are denied
             }
         }
@@ -133,17 +135,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    private fun restartActivity() {
+        val intent = intent
+        finish()
+        startActivity(intent)
+        overridePendingTransition(0, 0) // Optional: No animation on restart
+    }
 
     // Observers & Listeners
     private fun setupLiveDataObservers() {
         viewModel.internetConnected.observe(this) { connected ->
             if(connected) {
-                @SuppressLint("SetTextI18n")
-                binding.tvInternet.text = "Connection Has"
+                binding.tvInternet.text = resources.getText(R.string.internet_connection_exists) //"Connection Exists"
                 binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
             } else {
-                @SuppressLint("SetTextI18n")
-                binding.tvInternet.text = "Connection NOT Has"
+                binding.tvInternet.text = resources.getText(R.string.internet_connection_missing) //"Connection Missing"
                 binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
             }
         }
@@ -159,15 +165,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
                 binding.tvUsersDataFromDB.text = allUsersData
             } else {
-                binding.tvUsersDataFromDB.text = "No Data"
+                binding.tvUsersDataFromDB.text = resources.getText(R.string.text_no_data) //"No Data"
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setupClickListeners() {
         binding.iBtnLanguageSwitch.setOnClickListener {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show()
+            viewModel.switchLanguage(this)
+            Toast.makeText(this, resources.getText(R.string.text_language_switched), Toast.LENGTH_LONG).show()
+            restartActivity()
         }
 
         binding.iBtnFetchLocation.setOnClickListener {
@@ -178,6 +185,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     val longitude = location.longitude
                     Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
                     // You can update a TextView, send to server, etc.
+                    @SuppressLint("SetTextI18n")
                     binding.tvLocationCoordinates.text = "Latitude: $latitude, Longitude: $longitude"
 
                     setupLocationMarkerOnMap(latitude, longitude)

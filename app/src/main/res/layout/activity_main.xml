@@ -39,7 +39,7 @@
                         android:scaleType="fitCenter"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@android:drawable/ic_menu_rotate"
+                        app:srcCompat="@android:drawable/ic_menu_sort_alphabetically"
                         tools:ignore="ContentDescription" />
 
                     <ImageButton
@@ -80,28 +80,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_120sdp"
                         android:visibility="gone"
-                        app:layout_constraintTop_toBottomOf="@id/tvLocationCoordinates"
+                        app:layout_constraintTop_toBottomOf="@id/iBtnFetchLocation"
                         tools:visibility="visible" />
 
                     <LinearLayout
                         android:id="@+id/llSetNameToPref"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
                         app:layout_constraintTop_toBottomOf="@id/mapView">
 
                         <EditText
                             android:id="@+id/etSetNameToPref"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:hint="Set Name in SharedPref"
-                            android:layout_weight="5"/>
+                            android:hint="@string/set_name_in_sharedpref"
+                            android:layout_weight="5"
+                            android:inputType="text" />
 
                         <Button
                             android:id="@+id/btnSetToPref"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="Set"/>
+                            android:drawableEnd="@drawable/ic_done_automirrored"
+                            android:text="@string/text_set" />
 
                     </LinearLayout>
                     <LinearLayout
@@ -115,7 +118,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:text="..."
+                            android:text="@string/text_ellipsize"
                             android:textAlignment="center"
                             android:textSize="@dimen/_16sdp" />
 
@@ -124,7 +127,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="Get"/>
+                            android:drawableEnd="@drawable/ic_done"
+                            android:text="@string/text_get" />
 
                     </LinearLayout>
                     <LinearLayout
@@ -139,19 +143,21 @@
                             android:id="@+id/etSetUserFirstNameDatabase"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Set First Name in Database"
-                            />
+                            android:hint="@string/set_first_name_in_database"
+                            android:inputType="text" />
+
                         <EditText
                             android:id="@+id/etSetUserLastNameDatabase"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Set Last Name in Database"
-                            />
+                            android:hint="@string/set_last_name_in_database"
+                            android:inputType="text" />
+
                         <EditText
                             android:id="@+id/etSetUserAgeDatabase"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Set Age in Database"
+                            android:hint="@string/set_age_in_database"
                             android:inputType="number"
                             android:maxLength="3"
                             />
@@ -160,26 +166,26 @@
                             android:id="@+id/btnInsertUserToDB"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Set To DB"/>
+                            android:text="@string/set_to_db"/>
 
                         <TextView
                             android:id="@+id/tvUsersDataFromDB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/_18sdp"
-                            android:text="From DB"/>
+                            android:text="@string/from_db"/>
 
                         <Button
                             android:id="@+id/btnFetchUsersFromDB"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fetch from To DB"/>
+                            android:text="@string/fetch_from_db"/>
 
                         <Button
                             android:id="@+id/btnClearDB"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Clear User DB"/>
+                            android:text="@string/clear_user_db"/>
 
                     </LinearLayout>
 

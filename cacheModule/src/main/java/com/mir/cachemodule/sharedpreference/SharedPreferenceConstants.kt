@@ -12,6 +12,13 @@ class SharedPreferenceConstants {
   // User Keys
   const val USER_NAME_KEY = "key_user_name"
 
+  // Settings
+  // Locale
+  const val KEY_APP_LOCALE_LANGUAGE = "key_app_locale_language"
+  const val KEY_APP_LOCALE_COUNTRY = "key_app_locale_country"
+  // Default Locale
+  const val DEFAULT_APP_LOCALE_LANGUAGE = "en"
+  const val DEFAULT_APP_LOCALE_COUNTRY = "bd"
  }
 
 }

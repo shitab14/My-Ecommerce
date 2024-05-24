@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Ecommerce</string>
+    <string name="internet_connection_exists">الإنترنت موجود</string>
+    <string name="internet_connection_missing">الإنترنت مفقود</string>
+    <string name="text_no_data">لايوجد بيانات</string>
+    <string name="fetch_from_db">جلب من قاعدة البيانات</string>
+    <string name="clear_user_db">مسح قاعدة بيانات المستخدم</string>
+    <string name="set_to_db">تعيين إلى قاعدة البيانات</string>
+    <string name="from_db">من قاعدة البيانات</string>
+    <string name="set_first_name_in_database">تعيين الاسم الأول في قاعدة البيانات</string>
+    <string name="set_last_name_in_database">تعيين الاسم الأخير في قاعدة البيانات</string>
+    <string name="set_age_in_database">ضبط العمر في قاعدة البيانات</string>
+    <string name="set_name_in_sharedpref">قم بتعيين الاسم في SharedPref</string>
+    <string name="text_ellipsize">…</string>
+    <string name="text_set">تعيين</string>
+    <string name="text_get">يحصل</string>
+    <string name="text_language_switched">تبديل اللغة</string>
+    <string name="text_some_permissions_are_denied">تم رفض بعض الأذونات</string>
+    <string name="text_all_permissions_granted">تم منح كافة الأذونات</string>
+
+</resources>
