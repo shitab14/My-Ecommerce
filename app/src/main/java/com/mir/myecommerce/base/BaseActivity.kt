@@ -28,10 +28,14 @@ abstract class BaseActivity<DataBinding: ViewDataBinding> : AppCompatActivity() 
   Log.d(baseActivityTag, "BaseActivity: onCreate")
 
   // Localization
-  val language: String = getLanguagePreference()
-  val country: String = getCountryPreference()
-  Log.d(baseActivityTag, "language: $language, country: $country")
-  LocalizationManager.setLocale(this, language, country) // Default is en BD
+  try {
+   val language: String = getLanguagePreference()
+   val country: String = getCountryPreference()
+   Log.d(baseActivityTag, "language: $language, country: $country")
+   LocalizationManager.setLocale(this, language, country) // Default is en BD
+  } catch (e: Exception) {
+   Log.e(baseActivityTag, "Exception: $e")
+  }
 
  }
 

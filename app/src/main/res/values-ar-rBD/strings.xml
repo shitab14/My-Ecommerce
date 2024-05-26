@@ -18,5 +18,7 @@
     <string name="text_language_switched">تبديل اللغة</string>
     <string name="text_some_permissions_are_denied">تم رفض بعض الأذونات</string>
     <string name="text_all_permissions_granted">تم منح كافة الأذونات</string>
+    <string name="go_to_list">Go To List</string>
+    <string name="fetch_list_data">جلب بيانات القائمة</string>
 
 </resources>

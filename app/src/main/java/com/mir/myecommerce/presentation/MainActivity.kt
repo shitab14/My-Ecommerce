@@ -2,6 +2,7 @@ package com.mir.myecommerce.presentation
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,7 +17,9 @@ import com.mir.myecommerce.R
 import com.mir.myecommerce.base.BaseActivity
 import com.mir.myecommerce.common.LocationUtil
 import com.mir.myecommerce.common.PermissionManager
+import com.mir.myecommerce.common.RestartHelper
 import com.mir.myecommerce.databinding.ActivityMainBinding
+import com.mir.myecommerce.presentation.listpage.ListActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
@@ -136,10 +139,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun restartActivity() {
-        val intent = intent
-        finish()
-        startActivity(intent)
+        RestartHelper.restartApp(this)
+//        val intent = intent
+//        finish()
+//        startActivity(intent)
         overridePendingTransition(0, 0) // Optional: No animation on restart
+    }
+
+    private fun goToListActivity() {
+        val data: String
+        var bundle = Bundle()
+        if(binding.etWillTakeThisToNext.text.isNotBlank()) {
+            data = binding.etWillTakeThisToNext.text.toString()
+//            intent.putExtra("EXTRA_STRING_DATA", data)
+            bundle = Bundle().apply {
+                putString("EXTRA_BUNDLE_STRING_DATA", data)
+                putInt("EXTRA_BUNDLE_INT_DATA", 1)
+            }
+        }
+        val intent = Intent(this, ListActivity::class.java).apply {
+            putExtras(bundle)
+        }
+        startActivity(intent)
     }
 
     // Observers & Listeners
@@ -235,6 +256,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnClearDB.setOnClickListener {
             viewModel.clearUserDatabase()
+        }
+
+        binding.btnGoToListActivity.setOnClickListener {
+            goToListActivity()
         }
 
     }

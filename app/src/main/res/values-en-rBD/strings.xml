@@ -18,5 +18,7 @@
     <string name="text_language_switched">Language Switched</string>
     <string name="text_some_permissions_are_denied">Some permissions are denied</string>
     <string name="text_all_permissions_granted">All permissions granted</string>
+    <string name="go_to_list">Go To List</string>
+    <string name="fetch_list_data">Fetch List Data</string>
 
 </resources>

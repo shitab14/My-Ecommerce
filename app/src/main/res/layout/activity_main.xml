@@ -50,7 +50,7 @@
                         android:scaleType="fitCenter"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/iBtnLanguageSwitch"
-                        app:srcCompat="@android:drawable/ic_menu_rotate"
+                        app:srcCompat="@drawable/ic_menu_mylocation"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -186,6 +186,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/clear_user_db"/>
+
+                        <EditText
+                            android:id="@+id/etWillTakeThisToNext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:hint="@string/go_to_list"/>
+
+                        <Button
+                            android:id="@+id/btnGoToListActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="@string/go_to_list"/>
 
                     </LinearLayout>
 

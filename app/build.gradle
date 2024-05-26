@@ -23,11 +23,21 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+            buildConfigField "String", "BASE_URL", "\"https://shitab14.github.io/\""
+            buildConfigField "String", "POKEMON_BASE_URL", "\"https://pokeapi.co/api/v2/\""
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            buildConfigField "String", "BASE_URL", "\"https://shitab14.github.io/\""
+            buildConfigField "String", "POKEMON_BASE_URL", "\"https://pokeapi.co/api/v2/\""
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -40,12 +50,15 @@ android {
     }
     // ------------------------------------- < Data Binding > -------------------------------------
     buildFeatures {
+        buildConfig true
+
         dataBinding true
     }
     // ------------------------------------ < / Data Binding > ------------------------------------
 }
 
 dependencies {
+    implementation 'androidx.activity:activity:1.9.0'
     annotationProcessor 'androidx.annotation:annotation:1.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
