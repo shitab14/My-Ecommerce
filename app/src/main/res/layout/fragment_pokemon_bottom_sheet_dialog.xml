@@ -29,12 +29,14 @@
             android:id="@+id/ivPokemon"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="center"
+            android:background="@android:color/white"
+            android:scaleType="fitCenter"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_image_grey" />
         
         <Button
             android:id="@+id/closeButton"
@@ -43,12 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_50sdp"
             android:layout_marginVertical="@dimen/_10sdp"
+            android:elevation="@dimen/_1sdp"
             android:onClick="@{bottomSheetDialogFragment::onCloseClicked}"
             android:padding="16dp"
             android:textColor="@android:color/holo_purple"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/ivPokemon"
-            tools:text="Close" />
+            android:text="@string/text_close" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

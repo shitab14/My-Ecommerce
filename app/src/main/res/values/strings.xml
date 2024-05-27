@@ -19,5 +19,6 @@
     <string name="text_all_permissions_granted">All permissions granted</string>
     <string name="go_to_list">Go To List</string>
     <string name="fetch_list_data">Fetch List Data</string>
+    <string name="text_close">Close</string>
 
 </resources>

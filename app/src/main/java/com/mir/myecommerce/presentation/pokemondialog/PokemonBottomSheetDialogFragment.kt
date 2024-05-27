@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mir.myecommerce.R
+import com.mir.myecommerce.common.ImageUtil
 import com.mir.myecommerce.databinding.FragmentPokemonBottomSheetDialogBinding
 import com.mir.myecommerce.presentation.listpage.PokemonItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,12 +45,16 @@ class PokemonBottomSheetDialogFragment(
 
  private fun setObserver() {
   viewModel.pokemonData.observe(this) { it ->
-   binding.tvName.text = it.name.toString()
-   Glide.with(this) // SHITAB TODO Optimize later
-    .load(it.image)
-    .placeholder(R.drawable.ic_image_grey)
-    .error(R.drawable.ic_error_grey)
-    .into(binding.ivPokemon)
+   binding.tvName.text = it.name
+
+
+   ImageUtil.loadImageByUrl(
+    fragment = this@PokemonBottomSheetDialogFragment,
+    supportsCache = true,
+    imageUrl = it.image,
+    imageView = binding.ivPokemon
+   )
+
   }
  }
 
