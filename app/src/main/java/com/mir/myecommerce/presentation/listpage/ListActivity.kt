@@ -33,6 +33,9 @@ class ListActivity : BaseActivity<ActivityListBinding>() {
         setupRecyclerViewWithInfiniteScrolling()
         setupObservers()
         setupClickListener()
+
+        // Load initial data
+        viewModel.loadMoreItems()
     }
 
     private fun setupObservers() {
@@ -46,15 +49,12 @@ class ListActivity : BaseActivity<ActivityListBinding>() {
     }
 
     private fun setupClickListener() {
-        binding.btnFetchData.setOnClickListener {
-            // Load initial data
-            viewModel.loadMoreItems()
-        }
+
     }
 
     private fun setupRecyclerViewWithInfiniteScrolling() {
         recyclerView = findViewById(R.id.recyclerView)
-        itemAdapter = ItemAdapter()
+        itemAdapter = ItemAdapter(supportFragmentManager)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = itemAdapter

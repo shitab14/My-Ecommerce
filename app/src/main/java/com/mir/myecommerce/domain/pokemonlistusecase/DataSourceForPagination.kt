@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.mir.myecommerce.network.ErrorMessage
 import com.mir.myecommerce.network.State
 import com.mir.myecommerce.data.repository.pokemonlistdatarepository.PokemonListDataRepository
-import com.mir.myecommerce.data.datamodel.PokemonResponseDTO
+import com.mir.myecommerce.data.datamodel.PokemonListResponseDTO
 import com.mir.myecommerce.presentation.listpage.PokemonItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -29,7 +29,7 @@ class DataSourceForPagination @Inject constructor(private val repository: Pokemo
   return itemsLiveData
  }
 
- operator fun invoke(): Flow<State<PokemonResponseDTO>> = flow {
+ operator fun invoke(): Flow<State<PokemonListResponseDTO>> = flow {
   try {
    emit(State.Loading)
    repository.getPokemonListResponseData(offset, limit).let { response ->

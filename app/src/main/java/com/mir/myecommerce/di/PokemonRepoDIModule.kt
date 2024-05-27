@@ -1,6 +1,8 @@
 package com.mir.myecommerce.di
 
 import android.content.Context
+import com.mir.myecommerce.data.repository.fetchpokemonrepository.FetchPokemonRepository
+import com.mir.myecommerce.data.repository.fetchpokemonrepository.FetchPokemonRepositoryImp
 import com.mir.myecommerce.network.PokemonApiService
 import com.mir.myecommerce.data.repository.pokemonlistdatarepository.PokemonListDataRepository
 import com.mir.myecommerce.data.repository.pokemonlistdatarepository.PokemonListDataRepositoryImp
@@ -19,7 +21,7 @@ shitabmir@gmail.com
 
 @Module
 @InstallIn(SingletonComponent::class)
-class PokemonListDIModule {
+class PokemonRepoDIModule {
 
  @Provides
  @Singleton
@@ -28,6 +30,16 @@ class PokemonListDIModule {
   @Named("pokemon_api_service") apiService: PokemonApiService
  ): PokemonListDataRepository {
   return PokemonListDataRepositoryImp(apiService)
+ }
+
+ @Provides
+ @Singleton
+ fun provideFetchPokemonRepository(
+  @ApplicationContext context: Context,
+  @Named("pokemon_api_service")
+  apiService: PokemonApiService
+ ): FetchPokemonRepository {
+  return FetchPokemonRepositoryImp(apiService)
  }
 
 }
