@@ -1,4 +1,4 @@
-package com.mir.myecommerce.common.glide
+package com.mir.commonlibrary.imagelib.glide
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder

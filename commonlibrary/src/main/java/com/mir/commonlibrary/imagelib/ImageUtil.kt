@@ -1,4 +1,4 @@
-package com.mir.myecommerce.common
+package com.mir.commonlibrary.imagelib
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.mir.myecommerce.R
+import com.mir.commonlibrary.R
 
 /**
 Created by Shitab Mir on 27/5/24.

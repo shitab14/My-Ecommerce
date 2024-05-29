@@ -3,6 +3,7 @@ package com.mir.testermodule.presentation.viewholder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mir.commonlibrary.imagelib.ImageUtil
 import com.mir.testermodule.data.dynamicviewdto.DynamicViews
 import com.mir.testermodule.databinding.ViewHolderStaticImageBinding
 
@@ -18,13 +19,12 @@ class StaticImageViewHolder(private val binding: ViewHolderStaticImageBinding) :
         // Show Content
         data.content?.image.let {
             it?.let { imageUrl ->
-                /*ImageUtil.loadImageByUrl(
+                ImageUtil.loadImageByUrl(
                     context = itemView.context,
                     supportsCache = true,
                     imageUrl = imageUrl,
                     imageView = binding.staticImage
-                )*/
-                binding.tvDummy.text = imageUrl
+                )
             }
         }
         binding.executePendingBindings()

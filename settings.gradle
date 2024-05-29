@@ -16,3 +16,4 @@ rootProject.name = "My Ecommerce"
 include ':app'
 include ':testerModule'
 include ':cacheModule'
+include ':commonlibrary'

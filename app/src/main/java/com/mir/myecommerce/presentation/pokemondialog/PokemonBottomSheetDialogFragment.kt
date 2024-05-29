@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mir.myecommerce.R
-import com.mir.myecommerce.common.ImageUtil
+import com.mir.commonlibrary.imagelib.ImageUtil
 import com.mir.myecommerce.databinding.FragmentPokemonBottomSheetDialogBinding
 import com.mir.myecommerce.presentation.listpage.PokemonItem
 import dagger.hilt.android.AndroidEntryPoint
