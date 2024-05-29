@@ -49,7 +49,7 @@ class PokemonBottomSheetDialogFragment(
 
 
    ImageUtil.loadImageByUrl(
-    fragment = this@PokemonBottomSheetDialogFragment,
+    context = requireContext(),
     supportsCache = true,
     imageUrl = it.image,
     imageView = binding.ivPokemon

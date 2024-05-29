@@ -20,6 +20,7 @@ import com.mir.myecommerce.common.PermissionManager
 import com.mir.myecommerce.common.RestartHelper
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
+import com.mir.testermodule.presentation.DynamicViewActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
@@ -162,6 +163,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         startActivity(intent)
     }
+    private fun goToDynamicViewActivity() {
+        val data: String
+        var bundle = Bundle()
+        if(binding.etWillTakeThisToNext.text.isNotBlank()) {
+            data = binding.etWillTakeThisToNext.text.toString()
+//            intent.putExtra("EXTRA_STRING_DATA", data)
+            bundle = Bundle().apply {
+                putString("EXTRA_BUNDLE_STRING_DATA", data)
+                putInt("EXTRA_BUNDLE_INT_DATA", 1)
+            }
+        }
+        val intent = Intent(this, DynamicViewActivity::class.java).apply {
+            putExtras(bundle)
+        }
+        startActivity(intent)
+    }
 
     // Observers & Listeners
     private fun setupLiveDataObservers() {
@@ -260,6 +277,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnGoToListActivity.setOnClickListener {
             goToListActivity()
+        }
+
+        binding.btnGoToDynamicViewActivity.setOnClickListener {
+            goToDynamicViewActivity()
         }
 
     }

@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
-import com.mir.myecommerce.network.ErrorMessage
-import com.mir.myecommerce.network.State
+import com.mir.testermodule.networkduplicate.ErrorMessage
+import com.mir.testermodule.networkduplicate.State
 import com.mir.myecommerce.data.repository.pokemonlistdatarepository.PokemonListDataRepository
 import com.mir.myecommerce.data.datamodel.PokemonListResponseDTO
 import com.mir.myecommerce.presentation.listpage.PokemonItem

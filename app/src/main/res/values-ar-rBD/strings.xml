@@ -21,5 +21,6 @@
     <string name="go_to_list">Go To List</string>
     <string name="fetch_list_data">جلب بيانات القائمة</string>
     <string name="text_close">غلق</string>
+    <string name="go_to_dynamic_view">Go to Dynamic View</string>
 
 </resources>

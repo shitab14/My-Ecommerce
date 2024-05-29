@@ -1,8 +1,8 @@
 package com.mir.myecommerce.common
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
@@ -16,7 +16,7 @@ shitabmir@gmail.com
 object ImageUtil {
 
  fun loadImageByUrl(
-  fragment: Fragment,
+  context: Context,
   supportsCache: Boolean,
   placeHolder: Int = R.drawable.ic_image_grey,
   errorView: Int = R.drawable.ic_error_grey,
@@ -24,7 +24,7 @@ object ImageUtil {
   imageView: ImageView
  ) {
 
-  Glide.with(fragment) // SHITAB TODO Optimize later
+  Glide.with(context) // SHITAB TODO Optimize & Move to seperate module later
    .load(imageUrl)
    .placeholder(placeHolder)
    .error(errorView)
@@ -42,7 +42,7 @@ object ImageUtil {
 
     override fun onLoadFailed(errorDrawable: Drawable?) {
      // If loading from cache fails, attempt to load from the network
-     Glide.with(fragment)
+     Glide.with(context)
       .load(imageUrl)
       .placeholder(placeHolder)
       .error(errorView)

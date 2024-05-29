@@ -4,8 +4,8 @@ import android.util.Log
 import com.google.gson.Gson
 import com.mir.myecommerce.data.datamodel.pokemon.PokemonResponseDTO
 import com.mir.myecommerce.data.repository.fetchpokemonrepository.FetchPokemonRepository
-import com.mir.myecommerce.network.ErrorMessage
-import com.mir.myecommerce.network.State
+import com.mir.testermodule.networkduplicate.ErrorMessage
+import com.mir.testermodule.networkduplicate.State
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Exception

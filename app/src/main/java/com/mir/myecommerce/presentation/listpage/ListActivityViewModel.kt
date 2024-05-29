@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mir.myecommerce.base.BaseViewModel
 import com.mir.myecommerce.domain.pokemonlistusecase.DataSourceForPagination
-import com.mir.myecommerce.network.State
+import com.mir.testermodule.networkduplicate.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -20,5 +20,6 @@
     <string name="go_to_list">Go To List</string>
     <string name="fetch_list_data">Fetch List Data</string>
     <string name="text_close">Close</string>
+    <string name="go_to_dynamic_view">Go to Dynamic View</string>
 
 </resources>

@@ -2,18 +2,16 @@ package com.mir.myecommerce.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mir.cachemodule.database.UserTable
 import com.mir.myecommerce.base.BaseViewModel
-import com.mir.myecommerce.common.NetworkUtil
 import com.mir.myecommerce.domain.appusecases.AppUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.DeleteUserTableUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.FetchUsersUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.InsertUserUseCase
 import com.mir.myecommerce.domain.userusecases.GetNameUseCase
 import com.mir.myecommerce.domain.userusecases.SetNameUseCase
-import com.mir.myecommerce.network.State
+import com.mir.testermodule.networkduplicate.State
 import com.mir.testermodule.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
