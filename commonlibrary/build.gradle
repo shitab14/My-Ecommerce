@@ -37,7 +37,6 @@ android {
     // ------------------------------------- < Data Binding > -------------------------------------
     buildFeatures {
         buildConfig true
-
         dataBinding true
     }
     // ------------------------------------ < / Data Binding > ------------------------------------
@@ -46,34 +45,38 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.13.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.activity:activity-ktx:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // core
+    implementation "${myLibraries.get("androidxcore")}" // "androidx.core:core-ktx:1.13.1"
+    implementation "${myLibraries.get("appCompat")}" // implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "${myLibraries.get("activity")}" // implementation "androidx.activity:activity-ktx:1.9.0"
 
-    //glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0") {
+    // testing
+    testImplementation "${myLibraries.get("junit")}" // testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "${myLibraries.get("extJunit")}" // androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "${myLibraries.get("espresso")}" // androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+
+    // design & ui
+    implementation "${myLibraries.get("material")}" // "com.google.android.material:material:1.12.0"
+    implementation "${myLibraries.get("constraintLayout")}" // "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    // glide
+    def glide = "${myLibraries.get("glide")}"
+    implementation (glide) { // implementation ("com.github.bumptech.glide:glide:4.16.0") {
+        transitive = true
         exclude group: "com.android.support"
     }
-    implementation 'com.github.bumptech.glide:annotations:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
-    implementation ("com.github.bumptech.glide:glide:4.16.0@aar") {
-        transitive = true
-    }
+    implementation "${myLibraries.get("glideannotations")}" // implementation "com.github.bumptech.glide:annotations:4.16.0"
+    annotationProcessor "${myLibraries.get("glidecompiler")}" // annotationProcessor "com.github.bumptech.glide:compiler:4.16.0"
 
-    // Dependency Injection Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    // dependency injection hilt
+    implementation "${myLibraries.get("daggerHilt")}" // implementation("com.google.dagger:hilt-android:2.48")
+    kapt "${myLibraries.get("daggerHiltCompiler")}" // kapt("com.google.dagger:hilt-android-compiler:2.48")
 
-    // Maps
-    implementation "org.osmdroid:osmdroid-android:6.1.18@aar"
+    // maps
+    implementation "${myLibraries.get("osmdroid")}" // implementation "org.osmdroid:osmdroid-android:6.1.18@aar"
 
     // Google Services
-    implementation "com.google.android.gms:play-services-location:21.2.0"
+    implementation "${myLibraries.get("playServiceLocation")}" // implementation "com.google.android.gms:play-services-location:21.3.0"
 
     // local
     implementation project(':cacheModule')

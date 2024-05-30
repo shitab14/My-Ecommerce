@@ -51,76 +51,71 @@ android {
     // ------------------------------------- < Data Binding > -------------------------------------
     buildFeatures {
         buildConfig true
-
         dataBinding true
     }
     // ------------------------------------ < / Data Binding > ------------------------------------
 }
 
 dependencies {
-    implementation 'androidx.activity:activity-ktx:1.9.0'
-    annotationProcessor 'androidx.annotation:annotation:1.7.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //core
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // core
+    implementation "${myLibraries.get("androidxcore")}" // 'androidx.core:core-ktx:1.13.1'
+    implementation "${myLibraries.get("appCompat")}" // implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "${myLibraries.get("activity")}" // implementation "androidx.activity:activity-ktx:1.9.0"
+    implementation "${myLibraries.get("fragment")}" // implementation "androidx.fragment:fragment-ktx:1.7.1"
+    implementation "${myLibraries.get("navigationFragment")}" // implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
+    implementation "${myLibraries.get("navigationUI")}" // implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
+
+    // legacy support
+    annotationProcessor "${myLibraries.get("annotation")}" // annotationProcessor "androidx.annotation:annotation:1.8.0"
+    implementation "${myLibraries.get("legacysupport")}" // implementation "androidx.legacy:legacy-support-v4:1.0.0"
 
     // design & ui
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    def nav_version = "2.4.2"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation 'androidx.fragment:fragment-ktx:1.5.1'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "${myLibraries.get("material")}" // "com.google.android.material:material:1.12.0"
+    implementation "${myLibraries.get("constraintLayout")}" // "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "${myLibraries.get("recyclerView")}" // implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    // sdp dp
+    implementation "${myLibraries.get("sdp")}" // implementation "com.intuit.sdp:sdp-android:1.1.1"
+    // Swipe to Refresh
+    implementation "${myLibraries.get("swiperefreshlayout")}" // implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 
-    // ktx
-    def lifecycle_version = "2.5.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    // lifecycle
+    implementation "${myLibraries.get("lifecycleLiveData")}" // implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.1"
+    implementation "${myLibraries.get("lifecycleViewModel")}" // implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1"
+    implementation "${myLibraries.get("lifecycleRuntime")}" // implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.1"
 
     //retrofit
-    def retrofit_version = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "${myLibraries.get("retrofit")}" // implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "${myLibraries.get("retrofitConverterGson")}" // implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
     // okhttp logging
-    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+    implementation "${myLibraries.get("logginginterceptor")}" // implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
     // coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation "${myLibraries.get("coroutinesAndroid")}" // implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
     // paging
-    def paging_version = "3.1.1"
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "${myLibraries.get("paging")}" // implementation "androidx.paging:paging-runtime-ktx:3.3.0"
 
-    // dagger hilt
-//    implementation "com.google.dagger:hilt-android:2.38.1"
-//    kapt "com.google.dagger:hilt-compiler:2.38.1"
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    // dependency injection hilt
+    implementation "${myLibraries.get("daggerHilt")}" // implementation("com.google.dagger:hilt-android:2.48")
+    kapt "${myLibraries.get("daggerHiltCompiler")}" // kapt("com.google.dagger:hilt-android-compiler:2.48")
 
+    // maps
+    implementation "${myLibraries.get("osmdroid")}" // implementation "org.osmdroid:osmdroid-android:6.1.18@aar"
 
-    // sdp dp
-    implementation 'com.intuit.sdp:sdp-android:1.1.1'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    // Maps
-    implementation "org.osmdroid:osmdroid-android:6.1.18@aar"
-    // location
-//    implementation "com.google.android.gms:play-services-location:20.0.0"
-    implementation "com.google.android.gms:play-services-location:21.2.0"
-
-    // Swipe to Refresh
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+    // Google Services
+    //    implementation "com.google.android.gms:play-services-location:20.0.0"
+    implementation "${myLibraries.get("playServiceLocation")}" // implementation "com.google.android.gms:play-services-location:21.3.0"
 
     // database
-    def room_version = "2.6.1"
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation "${myLibraries.get("room")}" // implementation "androidx.room:room-ktx:2.6.1"
+
+    // Testing
+    testImplementation "${myLibraries.get("junit")}" // testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "${myLibraries.get("extJunit")}" // androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "${myLibraries.get("espresso")}" // androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
 
     // local dependencies
     implementation(project(":testerModule"))
