@@ -1,4 +1,4 @@
-package com.mir.myecommerce.common
+package com.mir.commonlibrary
 
 import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
