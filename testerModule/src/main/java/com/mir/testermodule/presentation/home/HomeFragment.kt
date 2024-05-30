@@ -44,7 +44,7 @@ class HomeFragment :Fragment() {
             adapter = MultiTypeAdapter(response.dynamicViews)
             binding.recyclerView.adapter = adapter
         }
-
+// SHITAB TODO Optimize API Call
         viewModel.fetchData()
     }
 }

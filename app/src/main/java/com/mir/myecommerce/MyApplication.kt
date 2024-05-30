@@ -3,7 +3,7 @@ package com.mir.myecommerce
 import android.app.Application
 import android.util.Log
 import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
-import com.mir.myecommerce.common.ApplicationContextProvider
+import com.mir.commonlibrary.ApplicationContextProvider
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

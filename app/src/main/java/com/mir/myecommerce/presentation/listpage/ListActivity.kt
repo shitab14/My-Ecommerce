@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mir.myecommerce.R
-import com.mir.myecommerce.base.BaseActivity
+import com.mir.commonlibrary.base.BaseActivity
 import com.mir.myecommerce.databinding.ActivityListBinding
 import dagger.hilt.android.AndroidEntryPoint
 

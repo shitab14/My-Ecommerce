@@ -1,4 +1,4 @@
-package com.mir.myecommerce.common.localization
+package com.mir.commonlibrary.localization
 
 import android.content.Context
 import android.os.Build

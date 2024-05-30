@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mir.cachemodule.database.UserTable
-import com.mir.myecommerce.base.BaseViewModel
+import com.mir.commonlibrary.base.BaseViewModel
 import com.mir.myecommerce.domain.appusecases.AppUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.DeleteUserTableUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.FetchUsersUseCase

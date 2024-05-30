@@ -14,10 +14,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.mir.myecommerce.R
-import com.mir.myecommerce.base.BaseActivity
-import com.mir.myecommerce.common.LocationUtil
-import com.mir.myecommerce.common.PermissionManager
-import com.mir.myecommerce.common.RestartHelper
+import com.mir.commonlibrary.base.BaseActivity
+import com.mir.commonlibrary.LocationUtil
+import com.mir.commonlibrary.PermissionManager
+import com.mir.commonlibrary.RestartHelper
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity

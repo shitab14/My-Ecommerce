@@ -1,4 +1,4 @@
-package com.mir.myecommerce.common.localization
+package com.mir.commonlibrary.localization
 
 /**
 Created by Shitab Mir on 24/5/24.

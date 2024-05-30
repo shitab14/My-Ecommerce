@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mir.myecommerce.base.BaseViewModel
+import com.mir.commonlibrary.base.BaseViewModel
 import com.mir.myecommerce.domain.pokemonlistusecase.DataSourceForPagination
 import com.mir.testermodule.networkduplicate.State
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -5,7 +5,7 @@ plugins {
     id 'kotlin-kapt'
 //    id 'com.google.gms.google-services' // TODO: AFTER ADDING google-services.json
 
-    id 'dagger.hilt.android.plugin'
+//    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'org.jetbrains.kotlin.plugin.serialization'
     id("com.google.dagger.hilt.android")
@@ -110,7 +110,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // Maps
-    implementation "org.osmdroid:osmdroid-android:6.1.18"
+    implementation "org.osmdroid:osmdroid-android:6.1.18@aar"
     // location
 //    implementation "com.google.android.gms:play-services-location:20.0.0"
     implementation "com.google.android.gms:play-services-location:21.2.0"

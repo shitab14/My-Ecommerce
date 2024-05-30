@@ -1,4 +1,4 @@
-package com.mir.myecommerce.base
+package com.mir.commonlibrary.base
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import com.mir.cachemodule.sharedpreference.SharedPreferenceConstants
 import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
-import com.mir.myecommerce.common.localization.LocalizationManager
+import com.mir.commonlibrary.localization.LocalizationManager
 import javax.inject.Inject
 import kotlin.properties.Delegates
 

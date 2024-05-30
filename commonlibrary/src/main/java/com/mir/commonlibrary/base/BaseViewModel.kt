@@ -1,4 +1,4 @@
-package com.mir.myecommerce.base
+package com.mir.commonlibrary.base
 
 import android.content.Context
 import android.util.Log
@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mir.cachemodule.sharedpreference.SharedPreferenceConstants
 import com.mir.cachemodule.sharedpreference.SharedPreferenceManager
-import com.mir.myecommerce.common.localization.LocalizationManager
-import com.mir.myecommerce.common.NetworkUtil
+import com.mir.commonlibrary.NetworkUtil
+import com.mir.commonlibrary.localization.LocalizationManager
 import javax.inject.Inject
 
 /**

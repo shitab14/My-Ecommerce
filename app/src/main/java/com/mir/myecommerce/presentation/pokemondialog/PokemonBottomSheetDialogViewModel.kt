@@ -3,7 +3,7 @@ package com.mir.myecommerce.presentation.pokemondialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mir.myecommerce.base.BaseViewModel
+import com.mir.commonlibrary.base.BaseViewModel
 import com.mir.myecommerce.domain.pokemonlistusecase.FetchPokemonByUrlUseCase
 import com.mir.testermodule.networkduplicate.State
 import dagger.hilt.android.lifecycle.HiltViewModel
