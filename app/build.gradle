@@ -112,10 +112,15 @@ dependencies {
     // database
     implementation "${myLibraries.get("room")}" // implementation "androidx.room:room-ktx:2.6.1"
 
-    // Testing
+    // testing
     testImplementation "${myLibraries.get("junit")}" // testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "${myLibraries.get("extJunit")}" // androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "${myLibraries.get("espresso")}" // androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+//    androidTestImplementation "${myLibraries.get("extJunit")}" // androidTestImplementation "androidx.test.ext:junit:1.1.5"
+//    androidTestImplementation "${myLibraries.get("espresso")}" // androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+    testImplementation "${myLibraries.get("mockito")}" // testImplementation "org.mockito:mockito-core:4.0.0"
+    testImplementation "${myLibraries.get("mockitoInline")}" // testImplementation "org.mockito:mockito-inline:4.0.0"
+    testImplementation "${myLibraries.get("mockitoKotlin")}" // testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    // coroutines testing
+    testImplementation "${myLibraries.get("coroutinesTest")}" // testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
 
     // local dependencies
     implementation(project(":testerModule"))

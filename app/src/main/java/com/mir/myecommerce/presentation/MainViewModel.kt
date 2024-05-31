@@ -11,7 +11,7 @@ import com.mir.myecommerce.domain.databaseuserusecase.FetchUsersUseCase
 import com.mir.myecommerce.domain.databaseuserusecase.InsertUserUseCase
 import com.mir.myecommerce.domain.userusecases.GetNameUseCase
 import com.mir.myecommerce.domain.userusecases.SetNameUseCase
-import com.mir.testermodule.networkduplicate.State
+import com.mir.myecommerce.network.State
 import com.mir.testermodule.DateUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

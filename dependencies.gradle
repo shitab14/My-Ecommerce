@@ -39,6 +39,7 @@ ext {
             junit               :   "4.13.2",
             extJunit            :   "1.1.5",
             espresso            :   "3.5.1",
+            mockito             :   "4.0.0",
 
             kotlinStdLib     : '1.5.10',
             coroutines       : '1.5.0',
@@ -59,6 +60,7 @@ ext {
             lifecycleViewModel              :   "androidx.lifecycle:lifecycle-viewmodel-ktx:${myVersions.lifecycle}",
             lifecycleRuntime                :   "androidx.lifecycle:lifecycle-runtime-ktx:${myVersions.lifecycle}",
             coroutinesAndroid               :   "org.jetbrains.kotlinx:kotlinx-coroutines-android:${myVersions.coroutinesAndroid}",
+            coroutinesTest                  :   "org.jetbrains.kotlinx:kotlinx-coroutines-test:${myVersions.coroutinesAndroid}",
 
             toolsBuildGradle                :   "com.android.tools.build:gradle:${myVersions.toolsBuildGradle}",
             googleServices                  :   "com.google.gms:google-services:${myVersions.googleServices}",
@@ -95,6 +97,9 @@ ext {
             junit                           :   "junit:junit:${myVersions.junit}",
             extJunit                        :   "androidx.test.ext:junit:${myVersions.extJunit}",
             espresso                        :   "androidx.test.espresso:espresso-core:${myVersions.espresso}",
+            mockito                         :   "org.mockito:mockito-core:${myVersions.mockito}",
+            mockitoInline                   :   "org.mockito:mockito-inline:${myVersions.mockito}",
+            mockitoKotlin                   :   "org.mockito.kotlin:mockito-kotlin:${myVersions.mockito}",
 
             kotlinStdLib                    : "org.jetbrains.kotlin:kotlin-stdlib:${myVersions.kotlinStdLib}",
             coroutinesCore                  : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${myVersions.coroutines}",

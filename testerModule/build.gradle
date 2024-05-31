@@ -54,11 +54,6 @@ dependencies {
     // sdp dp
     implementation "${myLibraries.get("sdp")}" // implementation "com.intuit.sdp:sdp-android:1.1.1"
 
-    // testing
-    testImplementation "${myLibraries.get("junit")}" // testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "${myLibraries.get("extJunit")}" // androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "${myLibraries.get("espresso")}" // androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
-
     // retrofit gson
     implementation "${myLibraries.get("retrofitConverterGson")}" // implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
