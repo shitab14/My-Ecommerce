@@ -1,4 +1,4 @@
-package com.mir.testermodule.presentation
+package com.mir.testermodule.presentation.home
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

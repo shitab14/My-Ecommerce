@@ -23,7 +23,7 @@ class AppUseCase @Inject constructor(private val repository: AppDataRepository) 
             repository.getSomething().let { token ->
                 token.let {
                     val response = repository.getSomethingIncoming(path = it)
-//                    if (token != null) {
+                    if (token != null) {
                         if (!response.equals(null)) {
                             if (response.isSuccessful) {
                                 response.body()?.let { responseData ->
@@ -48,10 +48,10 @@ class AppUseCase @Inject constructor(private val repository: AppDataRepository) 
                         } else {
                             emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
                         }
-//                    }
-//                    else {
-//                        emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER))
-//                    }
+                    }
+                    else {
+                        emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER))
+                    }
                 } ?: kotlin.run {
                     emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER))
                 }
