@@ -21,35 +21,42 @@ class AppUseCase @Inject constructor(private val repository: AppDataRepository) 
         try {
             emit(State.Loading)
             repository.getSomething().let { token ->
-//                Log.d("AppUseCase", "use case getToken()")
                 token.let {
                     val response = repository.getSomethingIncoming(path = it)
-                    if(!response.equals(null)) {
-                        if (response.isSuccessful) {
-                            response.body()?.let { responseData ->
+//                    if (token != null) {
+                        if (!response.equals(null)) {
+                            if (response.isSuccessful) {
+                                response.body()?.let { responseData ->
 //                            Log.d("AppUseCase", "Passed ${Gson().toJson(responseData)}")
-                                emit(State.Success(responseData))
-                            } ?: kotlin.run {
-                                emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
-                            }
+                                    emit(State.Success(responseData))
+                                } ?: kotlin.run {
+                                    emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
+                                }
 
-                        } else {
-//                        Log.d("AppUseCase", "failed")
-                            if (response.code() == 401) {
-                                emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER, response.code()))
                             } else {
-                                emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
+                                if (response.code() == 401) {
+                                    emit(
+                                        State.Failed(
+                                            ErrorMessage.UNAUTHORIZED_USER,
+                                            response.code()
+                                        )
+                                    )
+                                } else {
+                                    emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
+                                }
                             }
+                        } else {
+                            emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
                         }
-                    } else {
-                        emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
-                    }
+//                    }
+//                    else {
+//                        emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER))
+//                    }
                 } ?: kotlin.run {
                     emit(State.Failed(ErrorMessage.UNAUTHORIZED_USER))
                 }
             }
         } catch (e: Exception) {
-//            Log.d("AppUseCase", "exception")
             e.printStackTrace()
             emit(State.Failed(ErrorMessage.SOMETHING_WENT_WRONG))
         }
