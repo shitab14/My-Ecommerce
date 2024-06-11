@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SERVICES!!!"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvOpenBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Bottom Sheet"
+            android:textSize="48sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvOpenBottomSheetFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Bottom Sheet Fragment"
+            android:textSize="48sp"
+            app:layout_constraintTop_toBottomOf="@id/tvOpenBottomSheet" />
+
+        <TextView
+            android:id="@+id/tvOpenDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Dialog"
+            android:textSize="48sp"
+            app:layout_constraintTop_toBottomOf="@id/tvOpenBottomSheetFragment" />
+
+        <TextView
+            android:id="@+id/tvOpenDialogFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Dialog Fragment"
+            android:textSize="48sp"
+            app:layout_constraintTop_toBottomOf="@id/tvOpenDialog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

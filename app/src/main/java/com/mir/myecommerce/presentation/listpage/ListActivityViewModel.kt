@@ -22,8 +22,8 @@ class ListActivityViewModel @Inject constructor(private val dataSource: DataSour
     private val tag = "ListActivityVM:"
 
     val items: LiveData<List<PokemonItem>> = dataSource.getItems()
-    private var isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    fun isLoading(): LiveData<Boolean> = isLoading
+    private var isPaginationLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    fun isPaginationLoading(): LiveData<Boolean> = isPaginationLoading
 
     fun loadMoreItems() {
         viewModelScope.launch {
@@ -31,15 +31,15 @@ class ListActivityViewModel @Inject constructor(private val dataSource: DataSour
                 when (it) {
                     is State.Loading -> {
                         Log.d(tag,"State.Loading")
-                        isLoading.value = true
+                        isPaginationLoading.value = true
                     }
                     is State.Success -> {
                         Log.d(tag,"State.Success ${it.data.results}")
-                        isLoading.value = false
+                        isPaginationLoading.value = false
                     }
                     is State.Failed -> {
                         Log.d(tag,"State.Failed")
-                        isLoading.value = false
+                        isPaginationLoading.value = false
                     }
 
                 }

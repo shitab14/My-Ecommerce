@@ -11,7 +11,7 @@ import com.mir.testermodule.R
 import com.mir.testermodule.databinding.ActivityDynamicViewBinding
 import com.mir.testermodule.presentation.home.HomeFragment
 import com.mir.testermodule.presentation.home.HomePageCache
-import com.mir.testermodule.presentation.services.ServicesFragment
+import com.mir.testermodule.presentation.services.UITestingFragment
 import com.mir.testermodule.presentation.settings.SettingsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +28,7 @@ class DynamicViewActivity : BaseActivity<ActivityDynamicViewBinding>() {
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dynamic_view)
 
-        val fragments = listOf(HomeFragment(), ServicesFragment(), SettingsFragment())
+        val fragments = listOf(HomeFragment(), UITestingFragment(), SettingsFragment())
         adapter = DynamicViewPagerAdapter(supportFragmentManager, fragments)
         binding.viewPager.adapter = adapter
 
@@ -38,7 +38,7 @@ class DynamicViewActivity : BaseActivity<ActivityDynamicViewBinding>() {
                     binding.viewPager.currentItem = 0
                     true
                 }
-                R.id.navigation_services -> {
+                R.id.navigation_ui_testing -> {
                     binding.viewPager.currentItem = 1
                     true
                 }

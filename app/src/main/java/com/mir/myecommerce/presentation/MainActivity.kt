@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +17,7 @@ import com.mir.commonlibrary.base.BaseActivity
 import com.mir.commonlibrary.LocationUtil
 import com.mir.commonlibrary.PermissionManager
 import com.mir.commonlibrary.RestartHelper
+import com.mir.commonlibrary.ui.UIUtil
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity
@@ -78,12 +78,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun requestMyPermissions() {
         permissionManager.requestPermissions(permissions)  { allPermissionsGranted ->
             if (allPermissionsGranted) {
-                Toast.makeText(this,
-                    getString(R.string.text_all_permissions_granted), Toast.LENGTH_SHORT).show()
+                UIUtil.showToast(this,
+                    getString(R.string.text_all_permissions_granted))
                 // Proceed with the app functionality that requires the permissions
             } else {
-                Toast.makeText(this,
-                    getString(R.string.text_some_permissions_are_denied), Toast.LENGTH_SHORT).show()
+                UIUtil.showToast(this,
+                    getString(R.string.text_some_permissions_are_denied))
                 // Handle the case where permissions are denied
             }
         }
@@ -192,7 +192,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
         viewModel.message.observe(this) { msg ->
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+            UIUtil.showToast(this, msg)
         }
 
         viewModel.userListFromDB.observe(this) { userList ->
@@ -211,7 +211,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setupClickListeners() {
         binding.iBtnLanguageSwitch.setOnClickListener {
             viewModel.switchLanguage(this)
-            Toast.makeText(this, resources.getText(R.string.text_language_switched), Toast.LENGTH_LONG).show()
+            UIUtil.showToast(this, resources.getText(R.string.text_language_switched).toString())
             restartActivity()
         }
 
@@ -259,7 +259,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 lName = (binding.etSetUserLastNameDatabase.text ?: "").toString(),
                 age =  age
             )
-            Toast.makeText(this, "Set to DB", Toast.LENGTH_LONG).show()
+            UIUtil.showToast(this, "Set to DB")
             binding.etSetUserFirstNameDatabase.text.clear()
             binding.etSetUserLastNameDatabase.text.clear()
             binding.etSetUserAgeDatabase.text.clear()

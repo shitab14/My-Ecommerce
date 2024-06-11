@@ -25,6 +25,9 @@ abstract class BaseViewModel: ViewModel() {
     private val _internetConnected : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val internetConnected: LiveData<Boolean> get() = _internetConnected
 
+    protected val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun checkInternetConnection() {
         _internetConnected.value = NetworkUtil.isNetworkAvailable()
     }

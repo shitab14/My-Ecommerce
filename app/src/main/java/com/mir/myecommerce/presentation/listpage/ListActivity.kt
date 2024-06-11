@@ -39,7 +39,7 @@ class ListActivity : BaseActivity<ActivityListBinding>() {
     }
 
     private fun setupObservers() {
-        viewModel.isLoading().observe(this) { loading ->
+        viewModel.isPaginationLoading().observe(this) { loading ->
             if (loading) {
                 binding.progressBar.show()
             } else {
