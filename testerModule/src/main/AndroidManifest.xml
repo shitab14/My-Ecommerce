@@ -3,6 +3,12 @@
 
     <application>
         <activity
+            android:name=".presentation.login.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.MyEcommerce.Fullscreen" />
+        <activity
             android:name=".presentation.DynamicViewActivity"
             android:exported="false" />
     </application>

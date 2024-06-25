@@ -210,6 +210,15 @@
                             android:drawableEnd="@drawable/moreinfo_arrow"
                             android:text="@string/go_to_dynamic_view"/>
 
+                        <Button
+                            android:id="@+id/btnGoToLoginActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Go To Login"
+                            tools:ignore="HardcodedText" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

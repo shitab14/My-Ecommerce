@@ -12,7 +12,12 @@
           "package_name": "com.mir.myecommerce"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1090782601217-g7r1kq29ekpcrrelol1sp39qed7eqapd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBx9mTZh232M5rrFFzyNavs7sMAVH3jgyc"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090782601217-g7r1kq29ekpcrrelol1sp39qed7eqapd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

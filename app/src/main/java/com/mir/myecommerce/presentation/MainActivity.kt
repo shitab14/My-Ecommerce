@@ -21,6 +21,7 @@ import com.mir.commonlibrary.ui.UIUtil
 import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity
+import com.mir.testermodule.presentation.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
@@ -179,6 +180,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         startActivity(intent)
     }
+    private fun goToLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
 
     // Observers & Listeners
     private fun setupLiveDataObservers() {
@@ -281,6 +286,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnGoToDynamicViewActivity.setOnClickListener {
             goToDynamicViewActivity()
+        }
+
+        binding.btnGoToLoginActivity.setOnClickListener {
+            goToLoginActivity()
         }
 
     }
