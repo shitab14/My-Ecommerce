@@ -1,4 +1,4 @@
-package com.mir.testermodule.presentation.services
+package com.mir.testermodule.presentation.uitesting
 
 import android.os.Bundle
 import android.view.LayoutInflater

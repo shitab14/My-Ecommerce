@@ -5,9 +5,13 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
+        android:id="@+id/navigation_web_testing"
+        android:icon="@drawable/ic_menu_offline"
+        android:title="UI" />
+    <item
         android:id="@+id/navigation_ui_testing"
         android:icon="@drawable/ic_services"
-        android:title="UI Testing" />
+        android:title="Web" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
