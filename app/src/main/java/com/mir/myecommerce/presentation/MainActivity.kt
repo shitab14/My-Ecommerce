@@ -22,6 +22,7 @@ import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity
 import com.mir.testermodule.presentation.login.LoginActivity
+import com.mir.testermodule.presentation.videopage.VideoActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
@@ -185,6 +186,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         startActivity(intent)
     }
 
+    private fun goToVideoActivity() {
+        val intent = Intent(this, VideoActivity::class.java)
+        startActivity(intent)
+    }
+
     // Observers & Listeners
     private fun setupLiveDataObservers() {
         viewModel.internetConnected.observe(this) { connected ->
@@ -290,6 +296,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnGoToLoginActivity.setOnClickListener {
             goToLoginActivity()
+        }
+
+        binding.btnGoToVideoActivity.setOnClickListener {
+            goToVideoActivity()
         }
 
     }

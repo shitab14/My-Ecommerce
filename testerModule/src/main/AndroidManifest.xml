@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".presentation.videopage.VideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.login.LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"

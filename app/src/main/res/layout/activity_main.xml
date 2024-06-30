@@ -219,6 +219,15 @@
                             android:text="Go To Login"
                             tools:ignore="HardcodedText" />
 
+                        <Button
+                            android:id="@+id/btnGoToVideoActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Go To Video Page"
+                            tools:ignore="HardcodedText" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
