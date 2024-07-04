@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.mir.commonlibrary.R
@@ -57,6 +58,47 @@ object ImageUtil {
  fun dpToPx(context: Context, dp: Int): Int {
   val density = context.resources.displayMetrics.density
   return (dp * density).toInt()
+ }
+
+ fun loadGifByUrl(
+  context: Context,
+  imageView: ImageView,
+  url: String,
+  autoplay: Boolean,
+  repeat: Boolean) {
+  val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.DATA)
+//  val drawableImageViewTarget = DrawableImageViewTarget(imageView)
+
+  if (repeat) {
+   Glide.with(context)
+    .asGif()
+    .load(url)
+    .apply(requestOptions)
+    .into(imageView)
+  } else {
+   Glide.with(context)
+    .asGif()
+    .load(url)
+    .apply(requestOptions)
+    .into(imageView)
+    .clearOnDetach()
+  }
+
+  if (!autoplay) {
+   imageView.setOnClickListener {
+    Glide.with(context)
+     .asGif()
+     .load(url)
+     .apply(requestOptions)
+     .into(imageView)
+   }
+  } else {
+   Glide.with(context)
+    .asGif()
+    .load(url)
+    .apply(requestOptions)
+    .into(imageView)
+  }
  }
 
 }

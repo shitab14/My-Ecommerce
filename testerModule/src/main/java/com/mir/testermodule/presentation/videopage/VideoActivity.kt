@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.databinding.DataBindingUtil
 import com.mir.commonlibrary.videoutil.VideoUtil
 import com.mir.commonlibrary.base.BaseActivity
+import com.mir.commonlibrary.imagelib.ImageUtil
 import com.mir.testermodule.R
 import com.mir.testermodule.databinding.ActivityVideoBinding
 
@@ -36,6 +37,13 @@ class VideoActivity : BaseActivity<ActivityVideoBinding>() {
             loaderView = binding.loaderView2
         )
 
+        ImageUtil.loadGifByUrl(
+            context = this,
+            imageView = binding.ivGif,
+            url = "https://shitab14.github.io/jsons/images/gif_animation.gif",
+            autoplay = true,
+            repeat = true
+        )
 
     }
 }
