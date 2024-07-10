@@ -22,6 +22,7 @@ import com.mir.myecommerce.databinding.ActivityMainBinding
 import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity
 import com.mir.testermodule.presentation.login.LoginActivity
+import com.mir.testermodule.presentation.sliderpage.SliderActivity
 import com.mir.testermodule.presentation.videopage.VideoActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -186,6 +187,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         startActivity(intent)
     }
 
+    private fun goToSliderActivity() {
+        val intent = Intent(this, SliderActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun goToVideoActivity() {
         val intent = Intent(this, VideoActivity::class.java)
         startActivity(intent)
@@ -300,6 +306,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnGoToVideoActivity.setOnClickListener {
             goToVideoActivity()
+        }
+
+        binding.btnGoToSliderActivity.setOnClickListener {
+            goToSliderActivity()
         }
 
     }

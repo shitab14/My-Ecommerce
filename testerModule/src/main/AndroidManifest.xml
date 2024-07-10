@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".presentation.sliderpage.SliderActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.videopage.VideoActivity"
             android:exported="false" />
         <activity
