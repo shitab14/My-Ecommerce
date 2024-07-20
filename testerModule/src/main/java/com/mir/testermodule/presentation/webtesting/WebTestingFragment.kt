@@ -1,5 +1,6 @@
 package com.mir.testermodule.presentation.webtesting
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,11 +57,15 @@ class WebTestingFragment: Fragment() {
 
     private fun sendDataToWeb(data: String) {
         binding.webviewContent.evaluateJavascript(
-            "javascript:receiveFromApp('$data');",
-            ValueCallback { result ->
-                // Process the result from the JavaScript execution
-                Toast.makeText(requireContext(), "JavaScript returned: $result", Toast.LENGTH_LONG).show()
-            })
+            "javascript:receiveFromApp('$data');"
+        ) { result ->
+            // Process the result from the JavaScript execution
+            Toast.makeText(
+                requireContext(),
+                "JavaScript returned: $result",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     inner class WebAppInterface {

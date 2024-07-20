@@ -37,12 +37,13 @@
 
         function receiveFromApp(data) {
             document.getElementById("webTextView").innerText = data;
+            return "Successfully received "+data;
         }
     </script>
 </head>
 <body>
 <label for="webInput"></label><input type="text" id="webInput" placeholder="Enter text">
 <button onclick="sendToApp()">Send to App</button>
-<p id="webTextView">TextView</p>
+<p id="webTextView">...</p>
 </body>
 </html>

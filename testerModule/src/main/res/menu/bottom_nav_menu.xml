@@ -7,11 +7,11 @@
     <item
         android:id="@+id/navigation_web_testing"
         android:icon="@drawable/ic_menu_offline"
-        android:title="UI" />
+        android:title="Web" />
     <item
         android:id="@+id/navigation_ui_testing"
         android:icon="@drawable/ic_services"
-        android:title="Web" />
+        android:title="UI" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
