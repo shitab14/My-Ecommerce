@@ -1,6 +1,7 @@
 package com.mir.testermodule.presentation.sliderpage
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -50,8 +51,13 @@ class SliderActivity : AppCompatActivity() {
     private fun setupAutoScroll() {
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                currentIndex = if (position > items.size) {
+                    position % items.size
+                } else {
+                    position
+                }
                 super.onPageSelected(position)
-                currentIndex = position
+
                 adjustScrollDelay()
             }
         })
@@ -75,7 +81,7 @@ class SliderActivity : AppCompatActivity() {
             1 -> 2L
             2 -> 6L
             3 -> 3L
-            else -> 10L
+            else -> 1L
         }
     }
 
