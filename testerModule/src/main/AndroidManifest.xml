@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".presentation.threadoperation.ThreadOperationActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.sliderpage.SliderActivity"
             android:exported="false" />
         <activity

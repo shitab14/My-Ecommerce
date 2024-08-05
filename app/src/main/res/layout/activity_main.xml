@@ -237,6 +237,15 @@
                             android:text="Go To Slider Page"
                             tools:ignore="HardcodedText" />
 
+                        <Button
+                            android:id="@+id/btnThreadOperationActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Go To Thread Operation Page"
+                            tools:ignore="HardcodedText" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

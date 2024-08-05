@@ -23,6 +23,7 @@ import com.mir.myecommerce.presentation.listpage.ListActivity
 import com.mir.testermodule.presentation.DynamicViewActivity
 import com.mir.testermodule.presentation.login.LoginActivity
 import com.mir.testermodule.presentation.sliderpage.SliderActivity
+import com.mir.testermodule.presentation.threadoperation.ThreadOperationActivity
 import com.mir.testermodule.presentation.videopage.VideoActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -196,16 +197,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val intent = Intent(this, VideoActivity::class.java)
         startActivity(intent)
     }
+    private fun goToThreadOperationActivity() {
+        val intent = Intent(this, ThreadOperationActivity::class.java)
+        startActivity(intent)
+    }
 
     // Observers & Listeners
     private fun setupLiveDataObservers() {
         viewModel.internetConnected.observe(this) { connected ->
             if(connected) {
                 binding.tvInternet.text = resources.getText(R.string.internet_connection_exists) //"Connection Exists"
-                binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+                binding.tvInternet.setTextColor(getColor(android.R.color.holo_green_dark))
             } else {
                 binding.tvInternet.text = resources.getText(R.string.internet_connection_missing) //"Connection Missing"
-                binding.tvInternet.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+                binding.tvInternet.setTextColor(getColor(android.R.color.holo_red_dark))
             }
         }
         viewModel.message.observe(this) { msg ->
@@ -310,6 +315,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.btnGoToSliderActivity.setOnClickListener {
             goToSliderActivity()
+        }
+
+        binding.btnThreadOperationActivity.setOnClickListener {
+            goToThreadOperationActivity()
         }
 
     }
