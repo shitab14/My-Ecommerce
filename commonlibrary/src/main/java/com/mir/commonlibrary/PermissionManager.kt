@@ -1,5 +1,6 @@
 package com.mir.commonlibrary
 
+import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
@@ -50,9 +51,13 @@ class PermissionManager(private val activity: Activity) {
 
   */
 
-
  companion object {
-  const val PERMISSION_REQUEST_CODE = 1
+  const val PERMISSION_LOCATION_REQUEST_CODE = 1
+  const val PERMISSION_FOR_WRITE_ACCESS: Int = 100
+  const val REQUEST_FOR_WRITE_INTERNAL = 4
+  const val REQUEST_FOR_CAMERA = 3
+  const val PERMISSION_FOR_BOTH_CAMERA_WRITE_ACCESS = 1000
+
  }
 
  private var permissionResultCallback: ((Boolean) -> Unit)? = null
@@ -66,7 +71,7 @@ class PermissionManager(private val activity: Activity) {
   }
 
   if (permissionsToRequest.isNotEmpty()) {
-   ActivityCompat.requestPermissions(activity, permissionsToRequest.toTypedArray(), PERMISSION_REQUEST_CODE)
+   ActivityCompat.requestPermissions(activity, permissionsToRequest.toTypedArray(), PERMISSION_LOCATION_REQUEST_CODE)
   } else {
    // All permissions are already granted
    callback(true)
@@ -79,7 +84,7 @@ class PermissionManager(private val activity: Activity) {
   permissions: Array<out String>,
   grantResults: IntArray
  ) {
-  if (requestCode == PERMISSION_REQUEST_CODE) {
+  if (requestCode == PERMISSION_LOCATION_REQUEST_CODE) {
    val allPermissionsGranted = grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
    permissionResultCallback?.invoke(allPermissionsGranted)
   }
@@ -89,4 +94,61 @@ class PermissionManager(private val activity: Activity) {
  fun isPermissionGranted(permission: String): Boolean {
   return ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED
  }
+
+ fun checkAndRequestPermissionsForGallery(): Boolean {
+  val permissions = arrayOf(
+   Manifest.permission.WRITE_EXTERNAL_STORAGE
+  )
+
+  val listPermissionsNeeded: MutableList<String> = ArrayList()
+  for (permission in permissions) {
+   if (ContextCompat.checkSelfPermission(
+     activity,
+     permission
+    ) != PackageManager.PERMISSION_GRANTED
+   ) {
+    listPermissionsNeeded.add(permission)
+   }
+  }
+  if (listPermissionsNeeded.isNotEmpty()) {
+   ActivityCompat.requestPermissions(
+    activity,
+    listPermissionsNeeded.toTypedArray<String>(),
+    PERMISSION_FOR_WRITE_ACCESS
+   )
+   return false
+  } else {
+   return true
+  }
+ }
+
+ fun checkAndRequestPermissionsForCamera(): Boolean {
+  val permissions = arrayOf(
+   Manifest.permission.CAMERA,
+   Manifest.permission.WRITE_EXTERNAL_STORAGE
+  )
+
+  val listPermissionsNeeded: MutableList<String> = java.util.ArrayList()
+  for (permission in permissions) {
+   if (ContextCompat.checkSelfPermission(
+     activity,
+     permission
+    ) != PackageManager.PERMISSION_GRANTED
+   ) {
+    listPermissionsNeeded.add(permission)
+   }
+  }
+  if (listPermissionsNeeded.isNotEmpty()) {
+   ActivityCompat.requestPermissions(
+    activity,
+    listPermissionsNeeded.toTypedArray<String>(),
+    PERMISSION_FOR_BOTH_CAMERA_WRITE_ACCESS
+   )
+   return false
+  } else {
+   return true
+  }
+ }
+
+
 }

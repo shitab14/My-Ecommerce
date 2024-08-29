@@ -246,6 +246,39 @@
                             android:text="Go To Thread Operation Page"
                             tools:ignore="HardcodedText" />
 
+                        <Button
+                            android:id="@+id/btnSpeechMatchActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Go To Speech Match Page"
+                            tools:ignore="HardcodedText" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivSetImage"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_12sdp" />
+
+                        <Button
+                            android:id="@+id/btnGetImageFromGallery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Gallery"
+                            tools:ignore="HardcodedText" />
+
+                        <Button
+                            android:id="@+id/btnGetImageFromCamera"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/moreinfo_arrow"
+                            android:text="Camera"
+                            tools:ignore="HardcodedText" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
